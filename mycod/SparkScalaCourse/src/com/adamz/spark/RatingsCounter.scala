@@ -19,6 +19,7 @@ object RatingsCounter {
     // Load up each line of the ratings data into an RDD
     val lines = sc.textFile("../ml-100k/u.data")
     
+    
     // Convert each line to a string, split it out by tabs, and extract the third field.
     // (The file format is userID, movieID, rating, timestamp)
     val ratings = lines.map(x => x.toString().split("\t")(2))
@@ -30,6 +31,7 @@ object RatingsCounter {
     val sortedResults = results.toSeq.sortBy(_._1)
     
     // Print each result on its own line.
+    // Prints a rating value with the corresponding number of ratings     
     sortedResults.foreach(println)
   }
 }
